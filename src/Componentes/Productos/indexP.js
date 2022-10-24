@@ -1,120 +1,33 @@
-import React from 'react'
-import guanabana from "../../images/guanabana.jpg";
+import React, { useContext } from 'react'
+import { DataContext } from '../../context/Dataprovider';
+import { ProductoItem } from './ProductoItem';
+
+
 export const ListaProductos = () => {
+    const value = useContext(DataContext)
+    const [productos] = value.productos
+
+    console.log(productos)
+
+
     return (
         <>
             <h1 className='title'> PRODUCTOS </h1>
-            <div className='productos'>
-                <div className='producto'>
-                    <a href="#">
-                        <div className='producto__img'>
-                            <img src={guanabana} alt="prod" width="150" />
-                        </div>
-                    </a>
-                    <div className='producto__footer'>
-                        <h1> Title </h1>
-                        <p> Categoría </p>
-                        <p className='price'>$320</p>
-                    </div>
-                    <div className='buttom'>
-                        <button className='btn'>
-                            Añadir al carrito
-                        </button>
-                        <div>
-                            <a href='#' className='btn'>vista</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='producto'>
-                    <a href="#">
-                        <div className='producto__img'>
-                            <img src={guanabana} alt="prod" width="150" />
-                        </div>
-                    </a>
-                    <div className='producto__footer'>
-                        <h1> Title </h1>
-                        <p> Categoría </p>
-                        <p className='price'>$320</p>
-                    </div>
-                    <div className='buttom'>
-                        <button className='btn'>
-                            Añadir al carrito
-                        </button>
-                        <div>
-                            <a href='#' className='btn'>vista</a>
-                        </div>
-                    </div>
-                </div>
-
-
-
-                <div className='producto'>
-                    <a href="#">
-                        <div className='producto__img'>
-                            <img src={guanabana} alt="prod" width="150" />
-                        </div>
-                    </a>
-                    <div className='producto__footer'>
-                        <h1> Title </h1>
-                        <p> Categoría </p>
-                        <p className='price'>$320</p>
-                    </div>
-                    <div className='buttom'>
-                        <button className='btn'>
-                            Añadir al carrito
-                        </button>
-                        <div>
-                            <a href='#' className='btn'>vista</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='producto'>
-                    <a href="#">
-                        <div className='producto__img'>
-                            <img src={guanabana} alt="prod" width="150" />
-                        </div>
-                    </a>
-                    <div className='producto__footer'>
-                        <h1> Title </h1>
-                        <p> Categoría </p>
-                        <p className='price'>$320</p>
-                    </div>
-                    <div className='buttom'>
-                        <button className='btn'>
-                            Añadir al carrito
-                        </button>
-                        <div>
-                            <a href='#' className='btn'>vista</a>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div className='producto'>
-                    <a href="#">
-                        <div className='producto__img'>
-                            <img src={guanabana} alt="prod" width="150" />
-                        </div>
-                    </a>
-                    <div className='producto__footer'>
-                        <h1> Title </h1>
-                        <p> Categoría </p>
-                        <p className='price'>$320</p>
-                    </div>
-                    <div className='buttom'>
-                        <button className='btn'>
-                            Añadir al carrito
-                        </button>
-                        <div>
-                            <a href='#' className='btn'>vista</a>
-                        </div>
-                    </div>
-                </div>
-                
+            <div className='Productos'>
+        
+            {
+                productos.map(producto => (
+                    <ProductoItem  
+                    key={producto.id } 
+                    id = {producto.id}
+                    title = {producto.title}
+                    price = {producto.price}
+                    categoria = {producto.categoria}
+                    stock = {producto.stock}
+                    image ={producto.image}
+                    />
+                ))
+            }    
             </div>
         </>
 

@@ -1,19 +1,22 @@
 import React from 'react'
 import helloWorld from "../../images/helloWorld.jpg";
+import { Link } from "react-router-dom";
+import { BrowserRouter as Router } from 'react-router-dom';
+
+
 export const Header = () => {
   return (
     <header>
 
-    <a href= "">
+    <Link to= "/">
         <div className='logo'>           
             <img src={helloWorld} alt="logo" width="150"/>
         </div>
-    </a>
+    </Link>
 
     <ul>
         <li>
-        <a href='#'> INICIO  </a>
-        <a href='#'> PRODUCTOS  </a>
+        <Link to='/Productos'> PRODUCTOS  </Link>
       </li>
     </ul>
 
