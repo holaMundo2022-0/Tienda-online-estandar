@@ -8,6 +8,7 @@ import {BrowserRouter as Router, Routes, Route, Link} from "react-router-dom";
 import {Paginas} from "./Componentes/Paginas";
 import { Inicio } from './Componentes/Inicio/indexI';
 import { DataProvider } from "./context/Dataprovider";
+import { Carrito } from './Componentes/Carrito/indexC';
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
       
       <Router>
       <Header/>  
-
+      <Carrito/>
       <Routes>
           <Route path="/" element={<Inicio />} />
           <Route path="/Productos" element={<ListaProductos />} />
+          
         </Routes>
         
       </Router>
