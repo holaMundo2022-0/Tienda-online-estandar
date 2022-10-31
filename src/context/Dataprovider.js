@@ -1,5 +1,6 @@
 import React, {useState, useEffect, createContext } from "react";
 import Data from "../Data.js";
+import DataVenta from "../DataVenta.js";
 
 export const DataContext = createContext();
 
@@ -8,7 +9,18 @@ export const DataProvider = (props) =>{
     const [menu, setMenu] = useState(false)
     const [carrito, setCarrito] = useState([])
     const [total, setTotal] = useState(0);
+    const [ventas, setVentas] = useState([])
     
+    useEffect(()=>{
+        const venta = DataVenta.items
+        if (venta){
+            setVentas(venta)
+        } else {
+            setVentas([])
+        } 
+       
+    },[])
+
     useEffect(()=>{
         const producto = Data.items
         if (producto){
@@ -18,6 +30,7 @@ export const DataProvider = (props) =>{
         } 
        
     },[])
+
 
     const addCarrito = (id) =>{
         const check = carrito.every(item =>{
@@ -60,7 +73,8 @@ export const DataProvider = (props) =>{
         menu: [menu, setMenu],
         addCarrito: addCarrito,
         carrito:[carrito, setCarrito],
-        total: [total, setTotal]
+        total: [total, setTotal],
+        ventas: [ventas]
     }
 return (
     <DataContext.Provider value = {value}>

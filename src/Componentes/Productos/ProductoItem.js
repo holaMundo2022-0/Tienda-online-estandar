@@ -1,8 +1,6 @@
 import React, {useContext} from 'react'
-import guanabana from '../../images/guanabana.jpg';
 import {Link} from "react-router-dom";
 import { DataContext } from '../../context/Dataprovider';
-import Data from '../../Data';
 
 
 export const ProductoItem = ({
@@ -18,12 +16,12 @@ export const ProductoItem = ({
     const addCarrito =value.addCarrito;
     return (
         <div className='producto'>
-            <a href="#">
+            <Link to={`/producto/${id}`}>
                 <br/>
                 <div className='producto__img'>
                     <img src={image} alt={title} width="150" />
                 </div>
-            </a>
+            </Link>
             <div className='producto__footer'>
                 <h1> {title} </h1>
                 <p> {categoria} </p>
@@ -33,7 +31,7 @@ export const ProductoItem = ({
                 <button className='btn' onClick={() =>addCarrito(id)}> Añadir al carrito
                 </button>
                 <div>
-                    <a href='#' className='btn'>vista</a>
+                    <Link to = {`/Productos/${id}`} className='btn'>vista</Link>
                 </div>
             </div>
         </div>
