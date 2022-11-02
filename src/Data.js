@@ -1,68 +1,68 @@
-const Data ={
+const Data = {
   status: "succes",
   items: [
     {
       id: 1,
       title: "Yuca",
       price: 900,
-      image: require('./images/yuca.jpg'),
+      image: require("./images/yuca.jpg"),
       category: "Tuberculo",
-      stock: 1, 
+      stock: 432,
     },
 
     {
       id: 2,
       title: "Papa",
       price: 1000,
-      image: require('./images/papa.jpg'),
+      image: require("./images/papa.jpg"),
       category: "Tuberculo",
-      stock: 1, 
+      stock: 543,
     },
 
     {
       id: 3,
       title: "Aguacate",
       price: 2200,
-      image: require('./images/aguacate.jpg'),
+      image: require("./images/aguacate.jpg"),
       category: "Fruta",
-      stock: 1, 
+      stock: 78,
     },
 
     {
       id: 4,
       title: "Pepino",
       price: 1500,
-      image: require('./images/pepino.jpg'),
+      image: require("./images/pepino.jpg"),
       category: "Verdura",
-      stock: 1, 
+      stock: 98,
     },
 
     {
       id: 5,
       title: "Tomate",
       price: 2000,
-      image: require('./images/tomate.jpg'),
+      image: require("./images/tomate.jpg"),
       category: "Verdura",
-      stock: 1, 
+      stock: 1751,
     },
 
     {
       id: 6,
       title: "Limón",
       price: 250,
-      image: require('./images/limon.jpg'),
+      image: require("./images/limon.jpg"),
       category: "Fruta",
-      stock: 1, 
+      stock: 4365,
     },
 
     {
       id: 7,
       title: "Naranja",
       price: 650,
-      image: require('./images/naranja.jpg'),
+      image: require("./images/naranja.jpg"),
       category: "Fruta",
-      stock: 1, 
-    }
+      stock: 7573,
+    },
   ],
 };
 

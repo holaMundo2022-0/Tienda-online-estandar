@@ -13,9 +13,9 @@ export const Formulario = () => {
           <label className="label">Producto</label>
           <input
             className="in"
-            {...register("elemento", { required: true, maxLength: 10 })}
+            {...register("title", { required: true, maxLength: 10 })}
             type="text"
-            {...register("elemento", { required: true, maxLength: 5 })}
+            {...register("title", { required: true, maxLength: 5 })}
           />
         </div>
 
@@ -24,7 +24,7 @@ export const Formulario = () => {
           <input
             className="in"
             type="text"
-            {...register("precio", { required: true, maxLength: 5 })}
+            {...register("price", { required: true, maxLength: 5 })}
           />
         </div>
         <div>
@@ -32,12 +32,12 @@ export const Formulario = () => {
           <input
             className="in"
             type="text"
-            {...register("cantidad", { required: true, maxLength: 5 })}
+            {...register("stock", { required: true, maxLength: 5 })}
           />
         </div>
         <div>
           <label className="label">Clasificación</label>
-          <select className="in" {...register("clasificacion")}>
+          <select className="in" {...register("category")}>
             <option value="1"> Verdura</option>
             <option value="2"> Fruta</option>
           </select>

@@ -27,7 +27,7 @@ const DataVenta = {
         },
       ],
       Total: 85679,
-      Fecha: "08/10/2022",
+      Fecha: "WED NOV 02 2022",
     },
 
     {
@@ -51,7 +51,7 @@ const DataVenta = {
         },
       ],
       Total: 54,
-      Fecha: "07/10/2022",
+      Fecha: "WED NOV 02 2022",
     },
 
     {
@@ -90,7 +90,7 @@ const DataVenta = {
         },
       ],
       Total: 45,
-      Fecha: "04/10/2022",
+      Fecha: "WED NOV 02 2022",
     },
     {
       id: 4,
@@ -128,7 +128,7 @@ const DataVenta = {
         },
       ],
       Total: 45,
-      Fecha: "04/10/2022",
+      Fecha: "WED NOV 02 2022",
     },
   ],
 };

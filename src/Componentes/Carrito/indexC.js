@@ -10,6 +10,8 @@ export const Carrito = () => {
   const tooglefalse = () => {
     setMenu(false);
   };
+  const AddVentas = value.AddVentas;
+  const removeProducto = value.removeProducto;
 
   const resta = (id) => {
     carrito.forEach((item) => {
@@ -32,17 +34,17 @@ export const Carrito = () => {
   const show1 = menu ? "carritos show" : "carritos";
   const show2 = menu ? "carrito show" : "carrito";
 
-  const removeProducto = (id) => {
-    if (window.confirm("¿Quiere eliminar el producto?")) {
-      carrito.forEach((item, index) => {
-        if (item.id === id) {
-          item.cantidad = 1;
-          carrito.splice(index, 1);
-        }
-      });
-      setCarrito([...carrito]);
-    }
-  };
+  // const removeProducto = (id) => {
+  //   if (window.confirm("¿Quiere eliminar el producto?")) {
+  //     carrito.forEach((item, index) => {
+  //       if (item.id === id) {
+  //         item.cantidad = 1;
+  //         carrito.splice(index, 1);
+  //       }
+  //     });
+  //     setCarrito([...carrito]);
+  //   }
+  // };
 
   return (
     <div className={show1}>
@@ -50,7 +52,6 @@ export const Carrito = () => {
         <div className="carrito__close" onClick={tooglefalse}>
           <box-icon name="x"> </box-icon>
         </div>
-        <h2>Su carrito</h2>
 
         <div className="carrito__center">
           {carrito.length === 0 ? (
@@ -103,7 +104,9 @@ export const Carrito = () => {
 
         <div className="carrito__footer">
           <h3> total: ${total} </h3>
-          <button className="btn"> Payment </button>
+          <button className="btn" onClick={() => AddVentas()}>
+            Realizar compra
+          </button>
         </div>
       </div>
     </div>

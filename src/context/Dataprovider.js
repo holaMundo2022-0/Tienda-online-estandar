@@ -2,7 +2,9 @@ import React, { useState, useEffect, createContext } from "react";
 import Data from "../Data.js";
 import DataVenta from "../DataVenta.js";
 import { useAuth0 } from "@auth0/auth0-react";
+import { empty } from "@apollo/client";
 export const DataContext = createContext();
+let Fecha = new Date();
 
 export const DataProvider = (props) => {
   const [productos, setProductos] = useState([]);
@@ -16,23 +18,15 @@ export const DataProvider = (props) => {
 
   const { user, isAuthenticated } = useAuth0();
 
-  useEffect(() => {
-    const venta = DataVenta.items;
-    if (venta) {
-      setVentas(venta);
-    } else {
-      setVentas([]);
-    }
-  }, []);
-
-  useEffect(() => {
-    const producto = Data.items;
-    if (producto) {
-      setProductos(producto);
-    } else {
-      setProductos([]);
-    }
-  }, []);
+  const removeProducto = (id) => {
+    carrito.forEach((item, index) => {
+      if (item.id === id) {
+        item.cantidad = 1;
+        carrito.splice(index, 1);
+      }
+    });
+    setCarrito([...carrito]);
+  };
 
   const addCarrito = (id) => {
     const check = carrito.every((item) => {
@@ -58,6 +52,102 @@ export const DataProvider = (props) => {
   useEffect(() => {
     localStorage.setItem("dataCarrito", JSON.stringify(carrito));
   }, [carrito]);
+
+  /* AddVentas */
+  useEffect(() => {
+    const venta = DataVenta.items;
+    if (venta) {
+      setVentas(venta);
+    } else {
+      setVentas([]);
+    }
+  }, []);
+
+  const AddVentas = () => {
+    // console.log(ventas);
+    //mapear el carrito
+    if (window.confirm(`Confirme su compra por un total de: $ ${total}`)) {
+      const agregar = carrito.map((item2) => {
+        return item2;
+      });
+
+      //
+      // verificar numero de ID
+      const Uid = ventas.map((venta) => {
+        return venta.id;
+      });
+      const tamaño = Uid.length;
+
+      //CONSTRUIR OBJETO
+      const Fventa = {
+        id: tamaño + 1,
+        Comprador: user.name,
+        Compra: agregar,
+        Total: total,
+        Fecha: Fecha.toDateString(),
+      };
+      // AGREGAR A VENTAS
+      if (agregar) {
+        ventas.push(Fventa);
+        // setVentas([...ventas, ...agregar]);
+      } else if (agregar === NaN) {
+        alert("no hay nada para agregar");
+      }
+      //eliminar productos del carrito
+      const eliminar = carrito.map((item3) => {
+        return item3.id;
+      });
+      for (var i = 0; i < eliminar.length; i++) {
+        removeProducto(eliminar[i]);
+      }
+    }
+  };
+  useEffect(() => {
+    const dataVentas = JSON.parse(localStorage.getItem("dataVentas"));
+    if (dataVentas) {
+      setVentas(dataVentas);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("dataVentas", JSON.stringify(ventas));
+  }, [ventas]);
+
+  /* AddVentas */
+
+  /* Addproducto */
+  useEffect(() => {
+    const producto = Data.items;
+    if (producto) {
+      setProductos(producto);
+    } else {
+      setProductos([]);
+    }
+  }, []);
+
+  // const addProductos = (title) => {
+  //   const check2 = productos.every((item) => {
+  //     return item.title !== title;
+  //   });
+  //   if (check2) {
+  //     setProductos([...productos, ...data2]);
+  //   } else {
+  //     alert("El producto ya se ha añadido a la lista de productos");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   const dataCarrito = JSON.parse(localStorage.getItem("dataCarrito"));
+  //   if (dataCarrito) {
+  //     setCarrito(dataCarrito);
+  //   }
+  // }, []);
+
+  // useEffect(() => {
+  //   localStorage.setItem("dataCarrito", JSON.stringify(carrito));
+  // }, [carrito]);
+
+  /* Addproducto */
 
   /* información del usuario */
   // useEffect(() => {
@@ -92,6 +182,8 @@ export const DataProvider = (props) => {
     ventas: [ventas],
     modal: [modal, setModal],
     addProduct: [addProduct, setAddProduct],
+    AddVentas: AddVentas,
+    removeProducto: removeProducto,
   };
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
