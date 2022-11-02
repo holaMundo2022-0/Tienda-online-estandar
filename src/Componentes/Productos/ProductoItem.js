@@ -14,7 +14,7 @@ export const ProductoItem = ({ id, title, price, categoria, stock, image }) => {
         <div className="producto__img">
           <img src={image} alt={title} width="150" />
           <div>Stock (Kg)</div>
-          <span className="span">{stock}</span>
+          <span className="span">{stock + 1}</span>
         </div>
       </Link>
       <div className="producto__footer">

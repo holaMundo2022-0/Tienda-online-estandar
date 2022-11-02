@@ -7,6 +7,8 @@ export const Carrito = () => {
   const [menu, setMenu] = value.menu;
   const [carrito, setCarrito] = value.carrito;
   const [total] = value.total;
+  const cancelarCompra = value.cancelarCompra;
+
   const tooglefalse = () => {
     setMenu(false);
   };
@@ -16,7 +18,8 @@ export const Carrito = () => {
   const resta = (id) => {
     carrito.forEach((item) => {
       if (item.id === id) {
-        item.stock === 1 ? (item.stock = 1) : (item.stock -= 1);
+        item.cantidad === 1 ? (item.cantidad = 1) : (item.cantidad -= 1);
+        item.stock += 1;
       }
       setCarrito([...carrito]);
     });
@@ -25,7 +28,9 @@ export const Carrito = () => {
   const suma = (id) => {
     carrito.forEach((item) => {
       if (item.id === id) {
-        item.stock += 1;
+        item.cantidad += 1;
+        item.stock -= 1;
+        console.log(item.cantidad);
       }
       setCarrito([...carrito]);
     });
@@ -52,6 +57,9 @@ export const Carrito = () => {
         <div className="carrito__close" onClick={tooglefalse}>
           <box-icon name="x"> </box-icon>
         </div>
+        <div className="carrito__cancel" onClick={cancelarCompra}>
+          <box-icon name="log-out-circle"></box-icon>
+        </div>
 
         <div className="carrito__center">
           {carrito.length === 0 ? (
@@ -69,10 +77,13 @@ export const Carrito = () => {
               {carrito.map((producto) => (
                 <div className="carrito__item">
                   <img src={producto.image} alt="" />
-                  <div>
+                  <div className="span">
+                    <br />
+                    <span>{producto.stock}</span>
                     <h3>{producto.title}</h3>
                     <p className="price">${producto.price}</p>
                   </div>
+
                   <div>
                     <box-icon
                       name="up-arrow"
@@ -81,7 +92,7 @@ export const Carrito = () => {
                     >
                       {" "}
                     </box-icon>
-                    <p className="cantidad">{producto.stock}</p>
+                    <p className="cantidad">{producto.cantidad}</p>
                     <box-icon
                       name="down-arrow"
                       type="solid"

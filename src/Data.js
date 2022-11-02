@@ -8,6 +8,7 @@ const Data = {
       image: require("./images/yuca.jpg"),
       category: "Tuberculo",
       stock: 432,
+      cantidad: 1,
     },
 
     {
@@ -17,6 +18,7 @@ const Data = {
       image: require("./images/papa.jpg"),
       category: "Tuberculo",
       stock: 543,
+      cantidad: 1,
     },
 
     {
@@ -26,6 +28,7 @@ const Data = {
       image: require("./images/aguacate.jpg"),
       category: "Fruta",
       stock: 78,
+      cantidad: 1,
     },
 
     {
@@ -35,6 +38,7 @@ const Data = {
       image: require("./images/pepino.jpg"),
       category: "Verdura",
       stock: 98,
+      cantidad: 1,
     },
 
     {
@@ -44,6 +48,7 @@ const Data = {
       image: require("./images/tomate.jpg"),
       category: "Verdura",
       stock: 1751,
+      cantidad: 1,
     },
 
     {
@@ -53,6 +58,7 @@ const Data = {
       image: require("./images/limon.jpg"),
       category: "Fruta",
       stock: 4365,
+      cantidad: 1,
     },
 
     {
@@ -62,6 +68,7 @@ const Data = {
       image: require("./images/naranja.jpg"),
       category: "Fruta",
       stock: 7573,
+      cantidad: 1,
     },
   ],
 };

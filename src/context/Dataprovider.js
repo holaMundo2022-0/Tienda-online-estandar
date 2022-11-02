@@ -18,6 +18,15 @@ export const DataProvider = (props) => {
 
   const { user, isAuthenticated } = useAuth0();
 
+  const cancelarCompra = () => {
+    const eliminar = carrito.map((item3) => {
+      return item3.id;
+    });
+    for (var i = 0; i < eliminar.length; i++) {
+      removeProducto(eliminar[i]);
+    }
+  };
+
   const removeProducto = (id) => {
     carrito.forEach((item, index) => {
       if (item.id === id) {
@@ -166,7 +175,7 @@ export const DataProvider = (props) => {
   useEffect(() => {
     const getTotal = () => {
       const res = carrito.reduce((prev, item) => {
-        return prev + item.price * item.stock;
+        return prev + item.price * item.cantidad;
       }, 0);
       setTotal(res);
     };
@@ -174,7 +183,7 @@ export const DataProvider = (props) => {
   }, [carrito]);
 
   const value = {
-    productos: [productos],
+    productos: [productos, setProductos],
     menu: [menu, setMenu],
     addCarrito: addCarrito,
     carrito: [carrito, setCarrito],
@@ -184,6 +193,7 @@ export const DataProvider = (props) => {
     addProduct: [addProduct, setAddProduct],
     AddVentas: AddVentas,
     removeProducto: removeProducto,
+    cancelarCompra: cancelarCompra,
   };
   return (
     <DataContext.Provider value={value}>{props.children}</DataContext.Provider>
