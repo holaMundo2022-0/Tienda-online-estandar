@@ -64,9 +64,9 @@ export const DataProvider = (props) => {
 
   /* AddVentas */
   useEffect(() => {
-    const venta = DataVenta.items;
-    if (venta) {
-      setVentas(venta);
+    const ventas = DataVenta.items;
+    if (ventas) {
+      setVentas(ventas);
     } else {
       setVentas([]);
     }
@@ -79,7 +79,7 @@ export const DataProvider = (props) => {
       const agregar = carrito.map((item2) => {
         return item2;
       });
-
+      console.log(agregar);
       //
       // verificar numero de ID
       const Uid = ventas.map((venta) => {
@@ -95,6 +95,8 @@ export const DataProvider = (props) => {
         Total: total,
         Fecha: Fecha.toDateString(),
       };
+      // console.log(Fventa);
+      // console.log(ventas);
       // AGREGAR A VENTAS
       if (agregar) {
         ventas.push(Fventa);
