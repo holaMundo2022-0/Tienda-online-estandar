@@ -5,27 +5,34 @@ import { DataContext } from "../../context/Dataprovider";
 import DataVenta from "../../DataVenta";
 
 export const VentasItem = ({
-  id,
+  // id,
   compra,
-  price,
-  stock,
+  // price,
+  // stock,
   Comprador,
   Fecha,
   Total,
 }) => {
   const value = useContext(DataContext);
-  const compraa = DataVenta.items.map((item) => {
-    return item.compra;
-  });
-
-  //console.log(compraa);
+  // const compraa = DataVenta.items.map((item) => {
+  //   return item.compra;
+  // });
+  console.log("alla");
+  console.log(compra);
+  console.log("aqui");
+  // let Compraaa = JSON.parse(Compra);
+  // console.log(JSON.parse(Compra));
   //const addCarrito =value.addCarrito;
   return (
-    <div className="producto">
-      <div className="producto__footer">
+    <div className="venta">
+      <div className="venta__footer">
         <h1> {Comprador} </h1>
-        <p> {compraa} </p>
         <p> {Fecha} </p>
+        <div>
+          Compra:
+          <p> {compra} </p>
+        </div>
+
         <p> {Total} </p>
         <p className="price">${Total}</p>
       </div>

@@ -15,7 +15,7 @@ export const Header = () => {
   const toogleMenu = () => {
     setMenu(!menu);
   };
-
+  const { user } = useAuth0();
   const { isAuthenticated, isLoading } = useAuth0();
 
   if (isLoading) return <h1>Loading...</h1>;
@@ -29,6 +29,20 @@ export const Header = () => {
       </Link>
       <ul>
         <li>{isAuthenticated ? <LogoutButton /> : <LoginButton />}</li>
+      </ul>
+
+      <ul>
+        {isAuthenticated ? <img src={user.picture} width="150" /> : <li></li>}
+      </ul>
+
+      <ul>
+        {isAuthenticated ? (
+          <li>
+            <Link to="/Profile"> PERFIL </Link>
+          </li>
+        ) : (
+          <li></li>
+        )}
       </ul>
 
       <ul>
@@ -49,16 +63,6 @@ export const Header = () => {
           {isAuthenticated ? (
             <li>
               <Link to="/AddProducts"> Añadir productos </Link>
-            </li>
-          ) : (
-            <li></li>
-          )}
-        </ul>
-
-        <ul>
-          {isAuthenticated ? (
-            <li>
-              <Link to="/Profile"> PERFIL </Link>
             </li>
           ) : (
             <li></li>

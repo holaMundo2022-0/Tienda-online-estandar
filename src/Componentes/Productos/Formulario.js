@@ -25,10 +25,10 @@ export const Formulario = () => {
     const clas = document.getElementById("4").value;
     const imag = document.getElementById("5").value;
 
-    console.log(prod);
-    console.log(prec);
-    console.log(cant);
-    console.log(clas);
+    // console.log(prod);
+    // console.log(prec);
+    // console.log(cant);
+    // console.log(clas);
     console.log(imag);
 
     const Fproducto = {

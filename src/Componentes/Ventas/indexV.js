@@ -9,12 +9,12 @@ export const ListaVentas = () => {
   return (
     <>
       <h1 className="title"> VENTAS </h1>
-      <div className="productos">
+      <div className="ventas">
         {ventas.map((ventas) => (
           <VentasItem
             key={ventas.id}
             id={ventas.id}
-            compra={ventas.compra}
+            compra={ventas.Compra}
             price={ventas.price}
             stock={ventas.stock}
             Comprador={ventas.Comprador}
