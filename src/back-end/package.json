@@ -1,22 +1,46 @@
 {
 
   "name": "back-end",
+
   "version": "1.0.0",
+
   "description": "",
+
   "main": "appBack.js",
+
   "scripts": {
-    "start": "node appBack.js"
+    "server": "nodemon index.js ",
+    "client": "cd.. && cd.. && npm start --prefix ",
+    "start": "concurrently --kill-others-on fail \"npm run server\" \"npm run client\" "
+    
+
   },
+
   "keywords": [],
+
   "author": "",
+
   "license": "ISC",
+
   "dependencies": {
+
     "cors": "^2.8.5",
+
     "dotenv": "^16.0.3",
+
     "express": "^4.18.2",
+
     "mongoose": "^6.7.2"
+
   },
+
   "devDependencies": {
+
+    "concurrently": "^7.5.0",
+
     "nodemon": "^2.0.20"
+
   }
+
 }
+
